@@ -4,13 +4,12 @@ project:
 website: 
   page-navigation: true
   title: "Making sharable documents with Quarto" 
-  site-url: "https://openscapes.github.io/quarto-website-tutorial" 
-  repo-url: https://github.com/openscapes/quarto-website-tutorial 
-  repo-actions: [edit, issue]
+  site-url: "https://gkutlerdodd.github.io/immunobiology-computer-exercises" 
+  repo-url: https://github.com/gkutlerdodd/immunobiology-computer-exercises
   
   page-footer:
-    right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
-    left: "&copy; CC-By Openscapes, 2024"
+    right: "This page is built with [Quarto](https://quarto.org/)."
+    left: "Theoretical Biology & Bioinformatics, Utrecht University"
     
   sidebar:
     logo: "images/openscapes_hex.png"
