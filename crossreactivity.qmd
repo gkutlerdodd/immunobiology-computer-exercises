@@ -2,7 +2,11 @@
 title: Computer exercise X - Finding protective HLA alleles against SARS-CoV-2 infection
 ---
 
-[Augusto et al. (2023, Nature)](https://doi.org/10.1038/s41586-023-06331-x) found that people carrying the HLA allele HLA-B*15:01 were substantially more likely to remain asymptomatic following SARS-CoV-2 infection. They provided evidence that this protection was associated with the ability of HLA-B*15:01 to present both the SARS-CoV-2 spike epitope NQKLIANQF and highly similar epitopes from the spike proteins of two seasonal coronaviruses. As a result, people carrying HLA-B*15:01 who had previously been exposed to these seasonal coronaviruses may already have had memory T cells capable of recognizing SARS-CoV-2 during their first infection.
+[Augusto et al. (2023, Nature)](https://doi.org/10.1038/s41586-023-06331-x) found that people carrying the HLA allele HLA-B\*15:01 were substantially more likely to remain asymptomatic following SARS-CoV-2 infection. They provided evidence that this protection was associated with the ability of HLA-B\*15:01 to present both the SARS-CoV-2 spike epitope NQKLIANQF and highly similar epitopes from the spike proteins of two seasonal coronaviruses. As a result, people carrying HLA-B\*15:01 who had previously been exposed to these seasonal coronaviruses may already have had memory T cells capable of recognizing SARS-CoV-2 during their first infection.
+
+The authors first compared HLA frequencies between people with symptomatic and asymptomatic SARS-CoV-2 infections and found that HLA-B\*15:01 was significantly overrepresented in the asymptomatic group. However, HLA-B\*15:01 was already relatively common in the symptomatic cohort, with a frequency of nearly 5%, and its frequency exceeded 11% in the asymptomatic cohort. Many other HLA alleles occurred at substantially lower frequencies. This raises an important question: **could other HLA alleles also present cross-reactive coronavirus epitopes but have been missed because of their low frequency in this cohort?**
+
+In this computer practical, you will investigate this question using bioinformatics tools. You will first learn how to use the **Immune Epitope Database (IEDB)** to identify experimentally validated coronavirus epitopes shown to elicit a T-cell response. You will then use **NetMHCpan** to predict peptide-HLA binding and investigate whether other HLA alleles can present cross-reactive epitopes.
 
 ## Exploring online
 
