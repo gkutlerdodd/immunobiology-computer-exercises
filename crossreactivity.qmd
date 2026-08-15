@@ -234,3 +234,30 @@ For this analysis, we will use **NetMHCpan** to perform *in silico* predictions 
 Next, **design an experiment that tests with HLA alleles could potentially present both peptides in a cross-reactive pair.** Think about what information you have available, what you need to provide as input to NetMHCpan, and how you will identify alleles that bind both peptides. **Come up with your own analysis before looking at the hints below.**
 
 > **Tip:** Include HLA-B*15:01 among the alleles you test. A successful analysis should allow you to recover the result reported by Augusto et al.
+
+::: {.callout-note}
+## Hints
+
+::: {.callout-tip collapse="true"}
+### Hint 1: Input data
+
+Use the `Peptide` input type. You will need to compile a list containing all of the candidate epitope pairs identified in the previous section.
+:::
+
+::: {.callout-tip collapse="true"}
+### Hint 2: HLA selection
+
+There are many possible ways to select HLA alleles to test. One approach is to use the alleles found in the `HLA supertype representative` list. HLA **supertypes** are groups of alleles that present peptides with similar physiochemical properties. Using representative alleles from different supertypes therefore provides a relatively diverse set of HLA molecules to test.
+:::
+
+::: {.callout-tip collapse="true"}
+### Hint 3: HLA selection
+
+For each candidate epitope pair, look for HLA alleles predicted to be **strong binders of both peptides**. These are the alleles that could potentially present both the SARS-CoV-2 and seasonal coronavirus epitopes.
+:::
+
+:::
+
+Inspect the NetMHCpan output visually or use your preferred programming language to analyze the data. **Do you find any HLA molecules predicted to present both peptides in a cross-reactive pair? Can you recover the HLA-B*15:01 result reported by Augusto et al.? What other HLA alleles do you identify as potential candidates?**
+
+> **Tip:** check the `Save predictions to XLS file` box above the Submit button to easily download the binding predictions from the NetMHCpan web server.
