@@ -74,7 +74,7 @@ def fetch_iedb_tcell_epitopes(virus_name):
         offset += 5000
         time.sleep(0.5) #Wait briefly to overloading the database with requests
 
-    return pd.json_normalize(all_rows)
+    return all_rows
 
 SARS_CoV2_records = fetch_iedb_tcell_epitopes("SARS-CoV2")
 print(f"Fetched records for {len(SARS_CoV2_records)} SARS-CoV-2 T-cell epitopes.")
@@ -99,6 +99,20 @@ Corona_229E_records = #YOUR CODE HERE
 ```
 
 Verify that you successfully retrieved records for all four viruses. Then, concatenate the records for SARS-CoV-2 and the seasonal coronaviruses using the code below:
+```{pyodide}
+#| persist: true
+#| max-lines: 20
+all_rows = []
+for record in [SARS_CoV2_records, Corona_OC43_records, Corona_HKU1_records, Corona_NL63_records, Corona_229E_records]:
+    all_rows.extend(record)
+
+all_records = pd.json_normalize(all_rows)
+df = all_records.rename(columns={"source_organism_name": "species"})
+keep_cols = [c for c in ["species", "linear_sequence", "parent_source_antigen_name"]]
+df = df[keep_cols].drop_duplicates()
+
+print(f"Total unique epitopes: {len(all_records)}")
+```
 
 ### Exploring the data
 
