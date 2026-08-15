@@ -1,5 +1,6 @@
 ---
 title: Computer exercise X - Finding protective HLA alleles against SARS-CoV-2 infection
+format: live-html
 ---
 
 [Augusto et al. (2023, Nature)](https://doi.org/10.1038/s41586-023-06331-x) found that people carrying the HLA allele HLA-B\*15:01 were substantially more likely to remain asymptomatic following SARS-CoV-2 infection. They provided evidence that this protection was associated with the ability of HLA-B\*15:01 to present both the SARS-CoV-2 spike epitope NQKLIANQF and highly similar epitopes from the spike proteins of two seasonal coronaviruses. As a result, people carrying HLA-B\*15:01 who had previously been exposed to these seasonal coronaviruses may already have had memory T cells capable of recognizing SARS-CoV-2 during their first infection.
