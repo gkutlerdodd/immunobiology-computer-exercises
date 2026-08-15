@@ -219,7 +219,7 @@ candidate_pairs = find_conserved_pairs(df, "SARS-CoV2", [
 candidate_pairs
 ```
 
-**How many candidate cross-reactive pairs do you find? Sanity check: did you find the reported cross-reactive paper from Augusto et al.?**
+**How many candidate cross-reactive pairs do you find? Sanity check: did you find the reported cross-reactive pair from Augusto et al.?**
 
 ### Challenge: processing longer epitopes
 For an extra challenge, modify the code above so that epitopes longer than 11 amino acids are broken down into **all overlapping peptides of length 9.**
