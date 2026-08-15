@@ -92,10 +92,10 @@ Next, write your own code to retrieve T-cell epitopes for the following four sea
 ```{pyodide}
 #| persist: true
 #| max-lines: 20
-OC43_records = #YOUR CODE HERE
-HKU1_records = #YOUR CODE HERE
-NL63_records = #YOUR CODE HERE
-229E_records = #YOUR CODE HERE
+Corona_OC43_records = #YOUR CODE HERE
+Corona_HKU1_records = #YOUR CODE HERE
+Corona_NL63_records = #YOUR CODE HERE
+Corona_229E_records = #YOUR CODE HERE
 ```
 
 Verify that you successfully retrieved records for all four viruses. Then, concatenate the records for SARS-CoV-2 and the seasonal coronaviruses using the code below:
