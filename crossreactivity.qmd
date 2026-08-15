@@ -21,6 +21,7 @@ Because preparing a complete query of the database can be time-consuming, we hav
 ### Finding epitopes from seasonal coronaviruses
 
 Next, write your own code to retrieve T-cell epitopes for the following four seasonal coronaviruses. **Use the organism names exactly as shown below**:
+
 - `Human coronavirus OC43 (Human coronavirus (strain OC43))`
 - `Human coronavirus HKU1 (CoV-HKU1)`
 - `Human coronavirus NL63 (Coronavirus NL63)`
@@ -46,8 +47,4 @@ We will also restrict our search to epitopes between 8 and 11 amino acids in len
 ### Challenge: processing longer epitopes
 For an extra challenge, modify the code above so that epitopes longer than 11 amino acids are broken down into **all overlapping peptides of length 9.**
 
-For example, the 12-amino acid peptide `AAAAAACCCCCC` would be split into:
-`AAAAAACCC`
-`AAAAACCCC`
-`AAAACCCCC`
-`AAACCCCCC`
+For example, the 12-amino acid peptide `AAAAAACCCCCC` would be split into: `AAAAAACCC`, `AAAAACCCC`, `AAAACCCCC`, and `AAACCCCCC`.
