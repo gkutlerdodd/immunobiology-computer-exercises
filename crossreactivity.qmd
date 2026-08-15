@@ -109,7 +109,7 @@ for record in [SARS_CoV2_records, Corona_OC43_records, Corona_HKU1_records, Coro
 
 all_records = pd.json_normalize(all_rows)
 df = all_records.rename(columns={"source_organism_name": "species"})
-keep_cols = [c for c in ["species", "linear_sequence", "parent_source_antigen_name"]]
+keep_cols = [c for c in ["species", "linear_sequence", "curated_source_antigen.name"]]
 df = df[keep_cols].drop_duplicates()
 
 print(f"Total unique epitopes: {len(df)}")
@@ -137,7 +137,8 @@ axes = [fig.add_subplot(gs[0]), fig.add_subplot(gs[1]), fig.add_subplot(gs[3])]
 colors = ["#0072B2", "#D55E00", "#CC79A7"]
 
 #Records per species
-species_counts = df["species"].value_counts()
+species_names = (df["species"].str.replace(r"\s*\(.*?\)+", "", regex=True).str.replace(r"\s+", " ", regex=True).str.strip())
+species_counts = species_names.value_counts()
 axes[0].barh(species_counts.index, species_counts.values, color=colors[0])
 axes[0].set_xscale("log")
 axes[0].invert_yaxis()
@@ -161,7 +162,7 @@ axes[2].set_ylabel("")
 for ax in axes:
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
-    ax.tick_params(axis="both", labelsize=9)
+    ax.tick_params(axis="both", labelsize=10)
 
 plt.show()
 ```
