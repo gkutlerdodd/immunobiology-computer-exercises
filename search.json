@@ -126,5 +126,15 @@
     "crumbs": [
       "Computer exercise X - Finding protective HLA alleles against SARS-CoV-2 infection"
     ]
+  },
+  {
+    "objectID": "crossreactivity.html#finding-candidate-protective-hla-alleles",
+    "href": "crossreactivity.html#finding-candidate-protective-hla-alleles",
+    "title": "Computer exercise X - Finding protective HLA alleles against SARS-CoV-2 infection",
+    "section": "Finding candidate protective HLA alleles",
+    "text": "Finding candidate protective HLA alleles\nNow that you have identified potential pairs of cross-reactive epitopes, the next question is whether any HLA molecule can present both peptides in a pair. If an HLA molecule binds both a SARS-CoV-2 epitope and a related seasonal coronavirus epitope, it could potentially provide a mechanism for pre-existing T-cell immunity against SARS-CoV-2.\nFor this analysis, we will use NetMHCpan to perform in silico predictions of MHC-peptide binding. Open NetMHCpan and familiarize yourself with the available input options.\nNext, design an experiment that tests with HLA alleles could potentially present both peptides in a cross-reactive pair. Think about what information you have available, what you need to provide as input to NetMHCpan, and how you will identify alleles that bind both peptides. Come up with your own analysis before looking at the hints below.\n\nTip: Include HLA-B*15:01 among the alleles you test. A successful analysis should allow you to recover the result reported by Augusto et al.",
+    "crumbs": [
+      "Computer exercise X - Finding protective HLA alleles against SARS-CoV-2 infection"
+    ]
   }
 ]
