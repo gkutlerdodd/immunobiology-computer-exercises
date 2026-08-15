@@ -6,6 +6,7 @@ pyodide:
   packages:
     - pandas
     - requests
+    - matplotlib
 ---
 
 [Augusto et al. (2023, Nature)](https://doi.org/10.1038/s41586-023-06331-x) found that people carrying the HLA allele HLA-B\*15:01 were substantially more likely to remain asymptomatic following SARS-CoV-2 infection. They provided evidence that this protection was associated with the ability of HLA-B\*15:01 to present both the SARS-CoV-2 spike epitope NQKLIANQF and highly similar epitopes from the spike proteins of two seasonal coronaviruses. As a result, people carrying HLA-B\*15:01 who had previously been exposed to these seasonal coronaviruses may already have had memory T cells capable of recognizing SARS-CoV-2 during their first infection.
@@ -111,12 +112,59 @@ df = all_records.rename(columns={"source_organism_name": "species"})
 keep_cols = [c for c in ["species", "linear_sequence", "parent_source_antigen_name"]]
 df = df[keep_cols].drop_duplicates()
 
-print(f"Total unique epitopes: {len(all_records)}")
+print(f"Total unique epitopes: {len(df)}")
 ```
 
 ### Exploring the data
 
 Before looking for cross-reactive epitopes, let’s first get a sense of what we have retrieved. The code below will generate a graphical overview of the data.
+
+```{pyodide}
+#| persist: true
+#| max-lines: 20
+import re
+import matplotlib.pyplot as plt
+
+#Clean source antigen names
+source_names = (df["curated_source_antigen.name"].str.replace(r"\s*\[.*?\]", "", regex=True).str.replace(r"\s+", " ", regex=True).str.strip().str.title())
+source_counts = source_names.value_counts().head(7).sort_values()
+
+fig = plt.figure(figsize=(14, 3.5))
+
+gs = fig.add_gridspec(1, 4, width_ratios=[1, 1, 0, 1], wspace=0.5)
+
+axes = [fig.add_subplot(gs[0]), fig.add_subplot(gs[1]), fig.add_subplot(gs[3])]
+colors = ["#0072B2", "#D55E00", "#CC79A7"]
+
+#Records per species
+species_counts = df["species"].value_counts()
+axes[0].barh(species_counts.index, species_counts.values, color=colors[0])
+axes[0].set_xscale("log")
+axes[0].invert_yaxis()
+axes[0].set_title("Epitope records by species", fontsize=14)
+axes[0].set_xlabel("Number of records (log scale)")
+axes[0].set_ylabel("")
+
+#Epitope length distribution
+axes[1].hist(df["linear_sequence"].str.len(), bins=range(8, 17), color=colors[1])
+axes[1].set_title("Epitope length distribution", fontsize=14)
+axes[1].set_xlabel("Peptide length (AA)")
+axes[1].set_ylabel("Number of records")
+axes[1].set_xticks(range(8, 17))
+
+#Source proteins
+axes[2].barh(source_counts.index, source_counts.values, color=colors[2],)
+axes[2].set_title("Top antigen source proteins", fontsize=14)
+axes[2].set_xlabel("Number of records")
+axes[2].set_ylabel("")
+
+for ax in axes:
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.tick_params(axis="both", labelsize=9)
+
+plt.show()
+```
 
 **Does the resulting plot match your expectations? Why or why not?**
 
