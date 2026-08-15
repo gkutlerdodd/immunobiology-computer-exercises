@@ -12,7 +12,7 @@ In this computer practical, you will investigate this question using bioinformat
 
 The **Immune Epitope Database (IEDB)** is a database of experimentally characterized epitopes associated with T- or B-cell immune responses. Because one of the most challenging parts of studying the immune response to a pathogen is determining which parts of the pathogen are recognized by the immune system, IEDB is a valuable resource for both experimental and computational analyses.
 
-First, let’s get a feeling for how the database is organized. Navigate to [iedb.org](iedb.org) and explore the available filtering options.
+First, let’s get a feeling for how the database is organized. Navigate to [iedb.org](https://iedb.org) and explore the available filtering options.
 
 **What kind of epitopes are stored in the database? Which type of epitope will we want to use for this analysis, and why?**
 
