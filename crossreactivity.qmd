@@ -18,6 +18,66 @@ First, let’s get a feeling for how the database is organized. Navigate to [ied
 
 Because preparing a complete query of the database can be time-consuming, we have provided Python code that retrieves experimentally validated **T-cell epitopes for SARS-CoV-2**. Run the code below and try to understand what each part of the code is doing.
 
+```{pyodide}
+#| persist: true
+import time
+import pandas as pd
+import warnings
+import requests
+
+IEDB_QUERY_API = "https://query-api.iedb.org"
+
+def fetch_iedb_tcell_epitopes(virus_name):
+    """Pull T-cell epitope records for a given virus from the IEDB."""
+
+    endpoint = f"{IEDB_QUERY_API}/tcell_search"
+    all_rows = []
+
+    offset = 0
+
+    #Look at a maximum of 20 pages of records (more than enough!)
+    for page in range(20):
+        params = {
+            "source_organism_name": f"eq.{virus_name}",
+            "linear_sequence": "not.is.null",
+            "limit": 5000,
+            "offset": offset,
+            "order": "tcell_id",
+        }
+
+        #Try to fetch a page of 5000 records
+        try:
+            r = requests.get(endpoint, params=params, timeout=60)
+            r.raise_for_status()
+
+        except requests.RequestException as e:
+            warnings.warn(f"IEDB query failed for '{virus_name}': {e}")
+            break
+
+        rows = r.json()
+
+        if not rows:
+            break
+
+        all_rows.extend(rows)
+
+        print(
+            f"  page {page + 1}: "
+            f"{len(rows)} records"
+        )
+
+        if len(rows) < 5000:
+            break
+
+        offset += 5000
+        time.sleep(0.5) #Wait briefly to overloading the database with requests
+
+    return pd.json_normalize(all_rows)
+
+SARS_CoV2_records = fetch_iedb_tcell_epitopes("SARS-CoV2")
+print(f"Fetched records for {len(SARS_CoV2_records)} SARS-CoV-2 T-cell epitopes.")
+```
+
 ### Finding epitopes from seasonal coronaviruses
 
 Next, write your own code to retrieve T-cell epitopes for the following four seasonal coronaviruses. **Use the organism names exactly as shown below**:
