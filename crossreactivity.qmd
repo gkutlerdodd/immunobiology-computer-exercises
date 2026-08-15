@@ -176,7 +176,7 @@ We will use this observation as a search rule: **for every SARS-CoV-2 epitope, s
 
 We will also restrict our search to epitopes between 8 and 11 amino acids in length, since this is the range of peptide lengths most commonly presented by HLA class I molecules. Run the code below to identify candidate pairs of cross-reactive epitopes.
 
-```
+```{pyodide}
 #| persist: true
 #| max-lines: 20
 def hamming(a, b):
