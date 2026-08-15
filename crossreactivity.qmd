@@ -1,7 +1,6 @@
 ---
 title: Computer exercise X - Finding protective HLA alleles against SARS-CoV-2 infection
 format: live-html
-engine: knitr
 
 pyodide:
   packages:
