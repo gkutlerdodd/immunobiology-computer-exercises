@@ -129,9 +129,9 @@ import matplotlib.pyplot as plt
 source_names = (df["curated_source_antigen.name"].str.replace(r"\s*\[.*?\]", "", regex=True).str.replace(r"\s+", " ", regex=True).str.strip().str.title())
 source_counts = source_names.value_counts().head(7).sort_values()
 
-fig = plt.figure(figsize=(14, 3.5))
+fig = plt.figure(figsize=(12, 4))
 
-gs = fig.add_gridspec(1, 5, width_ratios=[0.1, 1, 1, 0.3, 1], wspace=0.6)
+gs = fig.add_gridspec(1, 5, width_ratios=[0.1, 1, 1, 0.1, 1], wspace=1)
 
 axes = [fig.add_subplot(gs[1]), fig.add_subplot(gs[2]), fig.add_subplot(gs[4])]
 colors = ["#0072B2", "#D55E00", "#CC79A7"]
