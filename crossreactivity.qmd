@@ -131,9 +131,9 @@ source_counts = source_names.value_counts().head(7).sort_values()
 
 fig = plt.figure(figsize=(14, 3.5))
 
-gs = fig.add_gridspec(1, 4, width_ratios=[1, 1, 0, 1], wspace=0.5)
+gs = fig.add_gridspec(1, 5, width_ratios=[0.1, 1, 1, 0.3, 1], wspace=0.6)
 
-axes = [fig.add_subplot(gs[0]), fig.add_subplot(gs[1]), fig.add_subplot(gs[3])]
+axes = [fig.add_subplot(gs[1]), fig.add_subplot(gs[2]), fig.add_subplot(gs[4])]
 colors = ["#0072B2", "#D55E00", "#CC79A7"]
 
 #Records per species
