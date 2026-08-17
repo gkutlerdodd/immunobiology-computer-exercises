@@ -271,6 +271,27 @@ Now let’s reproduce some of the statistics from the paper. The code below calc
 
 > **Odds ratio** is defined as $\frac{f_{asymp}/(1-f_{asymp})}{f_{symp}/(1-f_{symp})}$, where $f_{asymp}$ and $f_{symp}$ are the frequencies of an allele in the asymptomatic and symptomatic cohorts, respectively. We exclude very rare alleles from this calculation because small differences in their frequencies can produce very large and potentially misleading odds ratios.
 
+```{pyodide}
+#| persist: true
+#| max-lines: 20
+#Ignore rare HLA alleles
+freq_floor = 0.005
+allele_subset = allele_freqs[(allele_freqs.Symptomatic > freq_floor) | (allele_freqs.Asymptomatic > freq_floor)].copy()
+
+#Computue odds ratios for each allele
+odds = lambda f: f / (1 - f)
+allele_subset["Odds ratio"] = odds(allele_subset.Asymptomatic) / odds(allele_subset.Symptomatic)
+allele_subset = allele_subset.sort_values("Odds ratio", ascending=False)
+
+
+fig, ax = plt.subplots(figsize=(8, 5))
+top = allele_subset.head(10).sort_values("Odds ratio")
+ax.barh(top['Allele'], top['Odds ratio'])
+ax.axvline(1, color="black", linewidth=0.8, linestyle="--")
+ax.set_xlabel("Odds ratio")
+plt.show()
+```
+
 Surprisingly, HLA-B\*15:01 is not the allele with the highest odds ratio! **Based on the allele frequencies in the study population, why do you think HLA-B\*15:01 was the only allele reported to be statistically significant?**
 
 ### Comparing your predictions with the study
