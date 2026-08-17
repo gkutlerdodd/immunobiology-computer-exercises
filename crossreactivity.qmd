@@ -267,6 +267,21 @@ First, let’s visualize the frequencies of HLA-A and HLA-B alleles in the study
 
 **Write code to visualize these allele frequencies.**
 
+```{pyodide}
+#| persist: true
+#| max-lines: 20
+allele_freqs = pd.read_csv("AugustoSI_allelefrequencies.csv")
+allele_freqs["Allele"] = allele_freqs["Locus"] + "*" + allele_freqs["Allele"].astype(str)
+
+N_SYMP  = 1292
+N_ASYMP = 136
+N_TOTAL = N_SYMP + N_ASYMP
+
+allele_freqs["Combined frequency"] = (allele_freqs.Symptomatic*N_SYMP+allele_freqs.Asymptomatic*N_ASYMP)/N_TOTAL
+
+#YOUR PLOTTING CODE HERE
+```
+
 Now let’s reproduce some of the statistics from the paper. The code below calculates the **odds ratio** for each allele. An odds ratio above 1 indicates that an allele is more common in the asymptomatic cohort than in the symptomatic cohort. Run the code below to calculate the odds ratio for each allele:
 
 > **Odds ratio** is defined as $\frac{f_{asymp}/(1-f_{asymp})}{f_{symp}/(1-f_{symp})}$, where $f_{asymp}$ and $f_{symp}$ are the frequencies of an allele in the asymptomatic and symptomatic cohorts, respectively. We exclude very rare alleles from this calculation because small differences in their frequencies can produce very large and potentially misleading odds ratios.
