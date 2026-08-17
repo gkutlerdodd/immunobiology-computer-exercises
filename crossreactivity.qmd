@@ -270,6 +270,12 @@ First, let’s visualize the frequencies of HLA-A and HLA-B alleles in the study
 ```{pyodide}
 #| persist: true
 #| max-lines: 20
+from pyodide.http import pyfetch
+response = await pyfetch("https://gkutlerdodd.github.io/immunobiology-computer-exercises/data/AugustoSI_allelefrequencies.csv")
+
+with open("AugustoSI_allelefrequencies.csv", "wb") as f:
+    f.write(await response.bytes())
+
 allele_freqs = pd.read_csv("AugustoSI_allelefrequencies.csv")
 allele_freqs["Allele"] = allele_freqs["Locus"] + "*" + allele_freqs["Allele"].astype(str)
 
