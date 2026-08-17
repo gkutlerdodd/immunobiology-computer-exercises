@@ -79,6 +79,35 @@ ul.task-list li input[type="checkbox"] {
 <script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -307,6 +336,46 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsIm1heC1saW5lcyI6MjAsInBlcnNpc3QiOnRy
 <p><strong>Tip:</strong> check the <code>Save predictions to XLS file</code> box above the Submit button to easily download the binding predictions from the NetMHCpan web server.</p>
 </blockquote>
 <p><strong>Which HLA alleles do you identify as potential candidates for mediating pre-existing immunity to SARS-CoV-2? What evidence supports your candidates?</strong></p>
+</section>
+<section id="hla-frequencies-across-populations" class="level2">
+<h2 class="anchored" data-anchor-id="hla-frequencies-across-populations">HLA frequencies across populations</h2>
+<p>Hopefully, you have identified additional HLA alleles that could potentially provide protection against symptomatic SARS-CoV-2 infection. Let’s return to the study by <a href="https://doi.org/10.1038/s41586-023-06331-x">Augusto et al.</a> and see if we can understand why some of these alleles may have been missed in their analysis.</p>
+<section id="hla-frequencies-in-the-study-cohort" class="level3">
+<h3 class="anchored" data-anchor-id="hla-frequencies-in-the-study-cohort">HLA frequencies in the study cohort</h3>
+<p>First, let’s visualize the frequencies of HLA-A and HLA-B alleles in the study population. Below, we have loaded the allele frequencies reported in Supplementary Table 2. Because the frequencies are reported separately for the symptomatic and asymptomatic groups, we have used size of each cohort to calculate the overall frequency of each allele in the study population.</p>
+<p><strong>Write code to visualize these allele frequencies.</strong></p>
+<p>Now let’s reproduce some of the statistics from the paper. The code below calculates the <strong>odds ratio</strong> for each allele. An odds ratio above 1 indicates that an allele is more common in the asymptomatic cohort than in the symptomatic cohort. Run the code below to calculate the odds ratio for each allele:</p>
+<blockquote class="blockquote">
+<p><strong>Odds ratio</strong> is defined as <span class="math inline">\(\frac{f_{asymp}/(1-f_{asymp})}{f_{symp}/(1-f_{symp})}\)</span>, where <span class="math inline">\(f_{asymp}\)</span> and <span class="math inline">\(f_{symp}\)</span> are the frequencies of an allele in the asymptomatic and symptomatic cohorts, respectively. We exclude very rare alleles from this calculation because small differences in their frequencies can produce very large and potentially misleading odds ratios.</p>
+</blockquote>
+<p>Surprisingly, HLA-B*15:01 is not the allele with the highest odds ratio! <strong>Based on the allele frequencies in the study population, why do you think HLA-B*15:01 was the only allele reported to be statistically significant?</strong></p>
+</section>
+<section id="comparing-your-predictions-with-the-study" class="level3">
+<h3 class="anchored" data-anchor-id="comparing-your-predictions-with-the-study">Comparing your predictions with the study</h3>
+<p>Now compare the HLA alleles you predicted to be potentially protective with the alleles observed in the Augusto et al.&nbsp;study cohort. <strong>Do any of the alleles with high odds ratios match your predictions?</strong></p>
+</section>
+<section id="hla-frequencies-around-the-world" class="level3">
+<h3 class="anchored" data-anchor-id="hla-frequencies-around-the-world">HLA frequencies around the world</h3>
+<p>Finally, let’s consider how representative the Augusto et al.&nbsp;study population is of global HLA diversity. The <strong>Allele Frequency Net Database</strong> compiles HLA frequencies from studies and summarizes them by geographic regions. Navigate to <a href="https://www.allelefrequencies.net">allelefrequencies.net</a> and click on <code>HLA</code>, then <code>Summary of most common alleles in each geographical region</code> under the <code>HLA Diversity and Overall Frequencies</code> tab.</p>
+<p>Browse through the most common HLA-A and HLA-B alleles in different geographic regions. <strong>What trends do you notice? How similar or different is the Augusto et al.&nbsp;cohort from populations in different regions of the world?</strong></p>
+</section>
+</section>
+<section id="putting-it-together" class="level2">
+<h2 class="anchored" data-anchor-id="putting-it-together">Putting it together</h2>
+<p>Throughout this practical, you have used experimentally validated epitopes, sequence comparisons, HLA-binding predictions, and population-level allele frequencies to investigate a biological hypothesis. Based on what you have learned:</p>
+<p><strong>How might the conclusions of Augusto et al.&nbsp;have differed if the study had included a much larger cohort?</strong></p>
+<p><strong>How much do you think the geographic composition of the study population could affect the HLA alleles identified as being associated with asymptomatic infection?</strong></p>
+</section>
+<section id="project-ideas" class="level2">
+<h2 class="anchored" data-anchor-id="project-ideas">Project ideas</h2>
+<p>If you decide to use this computer exercise for your poster presentation, here are some ideas to get you started:</p>
+<ul>
+<li><strong>Expand the epitope dataset.</strong> Include additional coronavirus species in your IEDB search, or investigate longer epitopes rather than restricting your analysis to peptides of 8-12 amino acids.</li>
+<li><strong>Investigate statistical power.</strong> Calculate statistical tests or confidence intervals for HLA allele enrichment in the asymptomatic cohort. Can you determine why HLA-B*15:01 reaches statistical significance while other alleles with similarly high odds ratios do not?</li>
+<li><strong>Analyze the alleles from the study cohort.</strong> Use the HLA alleles from the Augusto et al.&nbsp;study population as inputs to NetMHCpan. How well does your analysis align with the observed odds ratios?</li>
+<li><strong>Use structures for mechanistic explanations.</strong> If you are feeling ambitious, use available protein structures or structural prediction tools to investigate why particular HLA molecules might be able to present both members of a cross-reactive epitope pair.</li>
+<li>Or, of course, your own creative idea!</li>
+</ul>
 
 
 <script type="pyodide-data">
