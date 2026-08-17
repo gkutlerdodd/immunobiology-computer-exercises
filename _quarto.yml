@@ -1,5 +1,8 @@
 project: 
   type: website
+
+resources:
+  - data/AugustoSI_allelefrequencies.csv
   
 website: 
   page-navigation: true
