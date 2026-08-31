@@ -6,7 +6,7 @@ resources:
   
 website: 
   page-navigation: true
-  title: "Making sharable documents with Quarto" 
+  title: "Immunobiology 2026-2027" 
   site-url: "https://gkutlerdodd.github.io/immunobiology-computer-exercises" 
   repo-url: https://github.com/gkutlerdodd/immunobiology-computer-exercises
   
