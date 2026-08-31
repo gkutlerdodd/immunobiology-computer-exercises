@@ -14,29 +14,13 @@ website:
     right: "This page is built with [Quarto](https://quarto.org/)."
     left: "Theoretical Biology & Bioinformatics, Utrecht University"
     
-  sidebar:
-    logo: "images/openscapes_hex.png"
-    pinned: true
-    align: center
-    tools: 
-      - icon: globe
-        href: https://openscapes.org
-        text: "Openscapes.org"
-      - icon: github
-        href: https://github.com/openscapes/quarto-website-tutorial
-        text: "Quarto website tutorial"
-      - icon: twitter
-        href: https://twitter.com/openscapes
-        text: "Openscapes Twitter"         
-
+  sidebar:  
     style: "docked"
     search: true
     collapse-level: 1
     contents:
       - href: index.qmd
-        text: Welcome
-      - crossreactivity.qmd
-      - learning-more.qmd
+        text: Crossreactivity
 
 format:
   html:
@@ -44,7 +28,6 @@ format:
     code-copy: true
     code-overflow: wrap
     toc: true
-
 
 filters:
   - include-files.lua
